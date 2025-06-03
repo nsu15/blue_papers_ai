@@ -163,6 +163,23 @@
                 max-width: 100%;
             }
 
+        }
+  
+      @media (max-width: 600px) {
+         header h1 {
+            font-size: 1.6rem;
+             word-break: break-word;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    header {
+        padding: 20px 10px;
+    }
+}
+
             .container {
                 flex-direction: column;
                 align-items: center;
@@ -173,7 +190,7 @@
 <body>
 
 <header>
-    <h1 class="main-title">TheBluePapers.AI</h1>
+    <h1 class="text-xl md:text-3xl font-bold whitespace-nowrap overflow-visible truncate max-w-full px-2">TheBluePapers.AI</h1>
 <p class="subtitle">Where data meets the open road — discover the newest way to purchase pre-owned RVs</p>
 </header>
     
