@@ -1,0 +1,15 @@
+# Ignore Python virtual environment
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+
+# Additional cleanup and protection
+*.log
+*.sqlite3
+.idea/
+*.vscode/
+*.pyo
+*.pyd
+.env.*

@@ -2,357 +2,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>thebluepapers.ai</title>
+    <title>TheBluePapers.ai</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <!-- Load Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Load Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC:wght@700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 
     <style>
         body {
-            font-family: 'Libre Baskerville', Baskerville, serif;
-            background-color: #ffffff;
             margin: 0;
             padding: 0;
-            color: #333;
-        }
-        
-        .main-title {
-         font-size: 2.5rem;
-         font-weight: bold;
-        }
-
-        .subtitle {
-        font-size: 1.25rem;
-        color: #fff;        
-        margin-top: 0.5rem;
-        }
-
-
-
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 25px;
-            text-align: center;
-            font-family: 'Playfair Display SC', serif;
-            font-size: 2.2rem;
-            letter-spacing: 1px;
-        }
-
-        .description {
-            padding: 15px;
-            max-width: 900px;
-            margin: auto;
-            text-align: center;
-            color: #444;
-            font-size: 1.05rem;
-        }
-
-        .container {
+            background-color: #4169E1; /* Royal Blue */
+            font-family: 'Playfair Display', serif;
+            color: #222;
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            gap: 30px;
-            margin: 20px auto;
-            max-width: 1200px;
-            padding: 30px;
-        }
-          
-        .assistant-message {
-            border-left: none !important; /* Removes the blue border */
-            padding: 12px;
-            background-color: #fff;
-            font-size: 14px;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            box-sizing: border-box;
         }
 
-       .assistant-message h4 {
-            font-size: 16px; /* Makes the header text smaller */
-            margin-bottom: 10px;
-        }
-        
-       .box, .ai-box {
-           background-color: #f9f9f9;
-           border-radius: 10px;
-           box-shadow: 0 0 12px rgba(0, 0, 0, 0.05);
-           padding: 35px;
-           width: 700px;
-           box-sizing: border-box;
-           margin: 0 auto;
-           font-family: 'Libre Baskerville', Baskerville, serif;
-        }
-
-        h2 {
-            color: #007BFF;
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-        }
-
-        form select,
-        form input,
-        form textarea {
-            width: 100%;
-            padding: 12px;
-            margin-top: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1rem;
-            font-family: 'Libre Baskerville', Baskerville, serif;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        button {
-            background-color: #007BFF;
+        h1 {
             color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .prompt-container {
+            max-width: 520px;
+            background: white;
+            padding: 2rem 2.25rem;
+            border-radius: 1.25rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .prompt-input {
+            width: 100%;
+            padding: 1rem;
             font-size: 1rem;
-            font-family: 'Libre Baskerville', Baskerville, serif;
-        }
-
-        button:hover {
-            background-color: #0068d6;
-        }
-
-        .chat-box {
-            background-color: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-top: 20px;
-            font-size: 0.95rem;
-            color: #333;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            max-width: 100%;
-        }
-
-        .chat-user {
-            background-color: #ffffff;
-            text-align: right;
-            border-left: none;
-        }
-
-        .rv-box {
+            border-radius: 10px;
             border: 1px solid #ccc;
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 12px;
-            background-color: #fff;
+            margin-bottom: 1.5rem;
+            box-sizing: border-box;
+            font-family: 'Playfair Display', serif;
         }
 
-         .match-results h4 {
-             margin-top: 20px;
-             font-size: 16px;            
-             margin-bottom: 15px;
+        .submit-btn {
+            background-color: #4169E1;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 100%;
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
 
-        @media (max-width: 1100px) {
-            .box,
-            .ai-box {
-                width: 90%;
-                max-width: 100%;
-            }
-
+        .submit-btn:hover {
+            background-color: #2f4cb1;
         }
-  
-      @media (max-width: 600px) {
-         header h1 {
-            font-size: 1.6rem;
-             word-break: break-word;
-    }
 
-    .subtitle {
-        font-size: 1rem;
-    }
+        .result-container {
+            max-width: 520px;
+            margin-top: 2rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 1.25rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
 
-    header {
-        padding: 20px 10px;
-    }
-}
+        .ai-explanation {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1.25rem;
+            font-family: 'Playfair Display', serif;
+        }
 
-            .container {
-                flex-direction: column;
-                align-items: center;
-            }
+        .rv-card {
+            padding: 1rem 0;
+            border-bottom: 1px solid #d4af37; /* gold separator */
+            font-size: 1rem;
+        }
+
+        .rv-card:last-child {
+            border-bottom: none;
+        }
+
+        .rv-card strong {
+            font-size: 1.1rem;
+            color: #222;
+            display: block;
+            margin-bottom: 0.25rem;
+        }
+
+        .rv-card span {
+            display: block;
+            color: #555;
+            font-size: 0.95rem;
         }
     </style>
 </head>
 <body>
+    <h1>Where we starting? Where we going?</h1>
 
-<header>
-    <h1 class="text-xl md:text-3xl font-bold whitespace-nowrap overflow-visible truncate max-w-full px-2">TheBluePapers.AI</h1>
-<p class="subtitle">Where data meets the open road — discover the newest way to purchase pre-owned RVs</p>
-</header>
-    
-  
-<div class="description">
-    <h2 style="color: #007BFF;">TheBluePapers.ai — The Gold Standard for Pre-Owned RV Market Intelligence</h2>
-    <p><strong>TheBluePapers.ai</strong> is your go-to intelligence engine for the pre-owned RV market—trusted by businesses, optimized for travelers, and powered by one of the most robust datasets in the United States.</p>
-
-    <p>At its core are two high-performance engines for—<strong>Dealerships & Insurance Companies</strong> and <strong>Travelers</strong>—each built to extract maximum value from real-time pricing insights, consumer behavior, and localized demand.</p>
-
-    <p><strong>For RV Dealerships:</strong> Stay one step ahead of market shifts. TheBluePapers.ai helps you price your inventory competitively, identify high-demand makes and models by region, and benchmark against statewide trends. Whether you're expanding your lot or forecasting demand, our Price Estimator puts data behind every decision.</p>
-
-    <p><strong>For Insurance Companies:</strong> Access trustworthy, regionally indexed data to better inform policy underwriting, risk assessment, and asset valuation. Our tools provide a consistent and accurate view of the RV landscape to help you reduce loss ratios and improve quoting precision.</p>
-
-    <p><strong>For Travelers & Personal Use:</strong> Whether you're road-tripping with your family or going solo across the country, our AI-powered Travel Assistant listens to your goals and helps you find the best RV for your lifestyle, route, and budget—without the hassle.</p>
-
-    <p><strong>Our dataset features over 1,200 listings of the most popular pre-owned RVs in every U.S. state.</strong> From Texas to Oregon, New York to California, TheBluePapers.ai gives you the clearest view of the RV market—no guesswork, no fluff.</p>
-
-    <p><strong>Built by data. Powered by AI. Designed for how you move.</strong><br>
-    TheBluePapers.ai is transforming how America buys, sells, insures, and explores with RVs.</p>
-</div>
-
-<div class="container">
-
-    <!-- RV Price Estimator -->
-    <div class="box">
-        <h2>RV Dealerships & Insurance Companies</h2>
-        <form method="POST">
-    <input type="hidden" name="estimate_submit" value="1">
-
-  <div class="form-group">
-    <label for="state">Select a State:</label>
-    <select name="state" class="form-control">
-      <option value="">-- Select State --</option>
-      {% for state in states %}
-        <option value="{{ state }}" {% if state == selected_state %}selected{% endif %}>{{ state }}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="price_range">Average Price:</label>
-    <select name="price_range" class="form-control">
-  <option value="">-- Select Price --</option>
-  {% for price in prices %}
-    <option value="{{ price }}" {% if selected_price == price|string %}selected{% endif %}>
-      ${{ "{:,}".format(price) }}
-    </option>
-  {% endfor %}
-</select>
-
-
-  </div>
-
-  <div class="form-group">
-    <label for="year">RV Year:</label>
-    <select name="year" class="form-control">
-      <option value="">-- Select Year --</option>
-      {% for year in years %}
-        <option value="{{ year }}" {% if year|string == selected_year %}selected{% endif %}>{{ year }}</option>
-      {% endfor %}
-    </select>
-  </div>
-
-  <button type="submit" class="btn btn-primary">Find My RV</button>
-</form>
-
-
-
-  {% if estimate_results is not none %}
-  {% if estimate_results %}
-    <h3 class="mt-4">Matching RVs</h3>
-    <ul class="list-group mt-3">
-      {% for rv in estimate_results %}
-        <li class="list-group-item mb-3">
-          <strong>{{ rv['YEAR'] }} {{ rv['MAKE'] }} {{ rv['MODEL'] }}</strong><br>
-          Model #: {{ rv['MODEL_NUMBER'] }}<br>
-          Length: {{ rv['LENGTH'] }} ft<br>
-          State: {{ rv['STATE'] }}<br>
-          Price: ${{ "{:,}".format(rv['AVERAGE_PRICE']|int) }}
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p class="mt-3">No RVs found matching your criteria.</p>
-  {% endif %}
-{% endif %}
-
-
-
-
-    </div>
-
-
-
-    <!-- AI Assistant -->
-    <div class="box ai-box">
-    <h2>Travelers</h2>
-    <form method="POST">
-      <div class="mb-3">
-        <label for="query" class="form-label">What are your travel goals?</label>
-        <textarea class="form-control" name="query" rows="3" placeholder="I'm a mom with 3 kids, looking for an RV under $25,000 in Texas..."></textarea>
-      </div>
-      <button type="submit" name="search_submit" class="btn btn-primary">Find RV</button>
+    <form class="prompt-container" method="POST">
+        <input class="prompt-input" type="text" name="query" placeholder="Ex: Looking to go from Houston to Sedona under $25k" required>
+        <button class="submit-btn" type="submit" name="search_submit">Find RV</button>
     </form>
 
-    {% if query %}
-        <div class="chat-box chat-user">
-            <strong>You:</strong> {{ query }}
+    {% if ai_results %}
+        <div class="result-container">
+            <p class="ai-explanation">{{ ai_explanation }}</p>
+            {% for rv in ai_results %}
+                <div class="rv-card">
+                    <strong>{{ rv['YEAR'] }} {{ rv['MAKE'] }} {{ rv['MODEL'] }} {{ rv['MODEL_NUMBER'] or '' }}</strong>
+                    <span>Length: {{ rv['LENGTH'] }} ft</span>
+                    <span>Price: ${{ "{:,}".format(rv['AVERAGE_PRICE']|int) }}</span>
+                </div>
+            {% endfor %}
         </div>
     {% endif %}
-
-    {% if ai_results %}
-    <div class="match-results">
-        <h4>These options match your travel plans pretty well!</h4>
-        {% for rv in ai_results %}
-            <div class="rv-box">
-                <strong>{{ rv['YEAR'] }} {{ rv['MAKE'] }} {{ rv['MODEL'] }}</strong><br>
-                Model #: {{ rv['MODEL_NUMBER'] }}<br>
-                Length: {{ rv['LENGTH'] }} ft<br>
-                State: {{ rv['STATE'] }}<br>
-                Price: ${{ "{:,}".format(rv['AVERAGE_PRICE']) }}
-            </div>
-        {% endfor %}
-    </div>
-{% endif %}
-
-
-
-
-</div>
-
-       
-
-        {% if error %}
-            <div class="chat-box" style="background-color: #ffe9e9;">
-                <strong>Error:</strong> {{ error }}
-            </div>
-        {% endif %}
-    </div>
-    <!-- Feedback Box -->
-    <div class="box">
-        <h2>What did you think?</h2>
-        <form method="POST">
-            <label for="feedback">Tell us what you liked or what could be better:</label>
-            <textarea name="feedback" placeholder="Your feedback helps us improve..." required></textarea>
-            <button type="submit" name="feedback_submit">Submit Feedback</button>
-        </form>
-
-        {% if feedback_message %}
-            <div class="chat-box chat-ai">
-                <strong>Thanks for your feedback!</strong><br>
-                {{ feedback_message }}
-            </div>
-        {% endif %}
-    </div>
-
-</div>
-</body>
-</div>
-
 </body>
 </html>
-
-
